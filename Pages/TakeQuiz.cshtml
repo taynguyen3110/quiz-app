@@ -1,0 +1,57 @@
+﻿@page
+@model quiz_app.Pages.TakeQuizModel
+@{
+    ViewData["Title"] = "Take Quiz";
+}
+
+<div class="container">
+    <h1 class="mt-4">Take Quiz</h1>
+
+    @if (Model.IsQuizCompleted)
+    {
+        <h2 class="mt-4">Your Score: @Model.Score</h2>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Time left: <span id="time">300</span> seconds
+        </div>
+
+        <form method="post" id="quizForm">
+            @for (int i = 0; i < Model.Questions.Count; i++)
+            {
+                <div class="mb-4">
+                    <h3>@Model.Questions[i].Text</h3>
+                    @for (int j = 0; j < Model.Questions[i].Answers.Count; j++)
+                    {
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="answers[@i]" value="@Model.Questions[i].Answers[j].Text" />
+                            <label class="form-check-label">
+                                @Model.Questions[i].Answers[j].Text
+                            </label>
+                        </div>
+                    }
+                    <input type="hidden" name="answers[@i]" value="unanswered" />
+                </div>
+                    <input type="hidden" name="questionIds" value="@Model.Questions[i].QuestionId" />
+            }
+            <div class="mt-3">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        var timeLeft = 60; // 1 minutes
+        var timer = setInterval(function () {
+            timeLeft--;
+            document.getElementById("time").innerText = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                document.getElementById("quizForm").submit();
+            }
+        }, 1000);
+    </script>
+}
