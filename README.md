@@ -110,9 +110,3 @@ Contributions are welcome! If you have suggestions or want to report an issue, p
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
-
-## Contact
-
-For any inquiries, reach out via [your email] or [LinkedIn profile link].
-
----
