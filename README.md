@@ -1,5 +1,3 @@
----
-
 # Quizzit – A Razor Pages Quiz Application
 
  **Quizzit** is a dynamic quiz application built using **Razor Pages**, **C#**, **.NET**, and **Entity Framework Core**. This app provides an intuitive interface for creating, editing, viewing, and deleting quiz questions. Additionally, it allows users to take randomized quizzes and calculates their score upon completion.
